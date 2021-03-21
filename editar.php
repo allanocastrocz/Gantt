@@ -1,3 +1,8 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario']))
+  Header("Location: login.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,7 +85,7 @@
                 <label for="inputGastos" class="form-label">Gastos Administrativos</label>
                 <div class="input-group">
                     <span class="input-group-text" id="basic-addon2">$</span>
-                    <input type="number" class="form-control" id="inputGastos" name="gatos" value="12400.00">
+                    <input type="number" class="form-control" id="inputGastos" name="gastos" value="12400.00">
                 </div>
             </div>
             <div class="col-md-6">

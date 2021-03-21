@@ -1,16 +1,12 @@
 <?php
 if (isset($_POST['email'])) {
     include('conection.php');
-    // Conecta a la bd
-    $db = new DB();
-    $pdo = $db->connect();
-
     // datos entrantes
     $email = $_POST['email'];
     $password = $_POST['cont'];
 
     /* Ejecuta una sentencia preparada pasando un array de valores */
-    $query = "SELECT cont, id, nivid, apodo, correo FROM usuario WHERE correo = ?";
+    $query = "SELECT * FROM usuarios WHERE correo = ?";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$email]);
 
@@ -25,9 +21,8 @@ if (isset($_POST['email'])) {
             // inicia sesión
             session_start();
             // propiedades de la sesión del usuario
-            $_SESSION['usuario']['id'] = $user['id'];
-            $_SESSION['usuario']['nivel'] = $user['nivid'];
-            $_SESSION['usuario']['apodo'] = $user['apodo'];
+            $_SESSION['usuario']['id'] = $user['idus'];
+            $_SESSION['usuario']['nombre'] = $user['nombre'] . ' ' . $user['apepat'];
             $_SESSION['usuario']['correo'] = $user['correo'];
             // respuesta al cliente
             $respuesta['datos_correctos'] = true;
@@ -38,5 +33,5 @@ if (isset($_POST['email'])) {
     // imprime respuesta en formato JSON
     echo json_encode($respuesta);
 } else {
-    echo "<h1>ño</h1>";
+    header("Location: 403.php");
 }

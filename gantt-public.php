@@ -33,7 +33,7 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active text-primary" aria-current="page" href="index.php">Iniciar sesión</a>
+                        <a class="nav-link active text-primary" aria-current="page" href="login.php">Iniciar sesión</a>
                     </li>
                 </ul>
             </div>
