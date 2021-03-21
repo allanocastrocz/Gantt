@@ -33,4 +33,13 @@ class Consultas
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function GetRegistro($idAct)
+    {
+        $query = "SELECT * FROM actividades WHERE idact = ?";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([$idAct]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 }

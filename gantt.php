@@ -38,6 +38,7 @@ $registros = $queries->GetDatosGantt();
 
     <!-- Tabla -->
     <div class="container">
+        <a href="agregar.php" class="btn btn-primary mb-3">Agregar registro</a>
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
