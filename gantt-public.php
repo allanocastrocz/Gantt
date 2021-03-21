@@ -1,3 +1,9 @@
+<?php
+
+include("bd/Consultas.php");
+$queries = new Consultas();
+$registros = $queries->GetDatosGantt();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,12 +49,11 @@
 
     <!-- Tabla -->
     <div class="container">
-        <table id="example" class="table table-striped" style="width:100%">
+    <table id="tabla" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
                     <th>Tarea </th>
                     <th>Responsable</th>
-                    <th>Participantes</th>
                     <th>Inicio</th>
                     <th>Fin</th>
                     <th>Avance</th>
@@ -62,66 +67,27 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Compra de material</td>
-                    <td>Miguel Cruz</td>
-                    <td>Todos</td>
-                    <td>01/04/2021</td>
-                    <td>02/04/2021</td>
-                    <td>0</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>Factura</td>
-                    <td>Vacio</td>
-                </tr>
-                <tr>
-                    <td>Compra de material</td>
-                    <td>Miguel Cruz</td>
-                    <td>Todos</td>
-                    <td>01/04/2021</td>
-                    <td>02/04/2021</td>
-                    <td>0</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>Factura</td>
-                    <td>Vacio</td>
-                </tr>
-                <tr>
-                    <td>Compra de material</td>
-                    <td>Miguel Cruz</td>
-                    <td>Todos</td>
-                    <td>01/04/2021</td>
-                    <td>02/04/2021</td>
-                    <td>0</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>Factura</td>
-                    <td>Vacio</td>
-                </tr>
-                <tr>
-                    <td>Compra de material</td>
-                    <td>Miguel Cruz</td>
-                    <td>Todos</td>
-                    <td>01/04/2021</td>
-                    <td>02/04/2021</td>
-                    <td>0</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>$320,800</td>
-                    <td>Factura</td>
-                    <td>Vacio</td>
-                </tr>
+                <?php foreach ($registros as $reg) {
+                    $totales = $reg['mano_obra'] + $reg['materia_prima'] + $reg['depreciacion'] + $reg['gastos_admi'];
+                ?>
+                    <tr id="<?php echo $reg['idact']; ?>">
+                        <td><?php echo $reg['tarea']; ?></td>
+                        <td><?php echo $reg['nombre'] . ' ' . $reg['apepat']; ?></td>
+                        <td><?php echo $reg['inicio']; ?></td>
+                        <td><?php echo $reg['fin']; ?></td>
+                        <td><?php echo $reg['avance']; ?></td>
+                        <td><?php echo '$' . $reg['mano_obra']; ?></td>
+                        <td><?php echo '$' . $reg['materia_prima']; ?></td>
+                        <td><?php echo '$' . $reg['depreciacion']; ?></td>
+                        <td><?php echo '$' . $reg['gastos_admi']; ?></td>
+                        <td><?php echo '$' . $totales; ?></td>
+                        <td><?php echo $reg['entregables']; ?></td>
+                        <td><?php echo $reg['observaciones']; ?></td>
+                    </tr>
+
+                <?php } ?>
+
+            </tbody>
         </table>
     </div>
 
@@ -137,7 +103,16 @@
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js"></script>
     <!-- Local -->
-    <script src="js/index.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#tabla').DataTable({
+                scrollX: true,
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
