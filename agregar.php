@@ -43,7 +43,11 @@ $usuarios = $queries->GetDatosUsuarios();
                 <input type="text" class="form-control" name="tarea" id="inputTarea" placeholder="Nombre de la tarea" required>
                 <div class="invalid-feedback">No usar caracteres especiales</div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-2">
+                <label for="inputTarea" class="form-label">Tarea</label>
+                <input type="text" class="form-control" name="version" id="inputVersion" placeholder="1.0.0" required>
+            </div>
+            <div class="col-md-4">
                 <label for="inputResponsable" class="form-label">Responsable</label>
                 <select class="form-select" name="responsable" id="inputResponsable" required>
                     <option selected disabled>Selecciona un usuario</option>
@@ -128,7 +132,7 @@ $usuarios = $queries->GetDatosUsuarios();
 
     <!-- Local -->
     <script src="js/validaciones.js"></script>
-    
+
 </body>
 
 </html>

@@ -45,6 +45,7 @@ $registros = $queries->GetDatosGantt();
                     <th>Acciones</th>
                     <th>Tarea </th>
                     <th>Responsable</th>
+                    <th>Version</th>
                     <th>Inicio</th>
                     <th>Fin</th>
                     <th>Avance</th>
@@ -79,6 +80,7 @@ $registros = $queries->GetDatosGantt();
                         </td>
                         <td><?php echo $reg['tarea']; ?></td>
                         <td><?php echo $reg['nombre'] . ' ' . $reg['apepat']; ?></td>
+                        <td><?php echo $reg['version']; ?></td>
                         <td><?php echo $reg['inicio']; ?></td>
                         <td><?php echo $reg['fin']; ?></td>
                         <td><?php echo $reg['avance']; ?></td>

@@ -26,7 +26,6 @@ $(document).ready(function () {
 
   $("#registro_editar").submit(function (event) {
     event.preventDefault();
-    console.log($("#registro_editar"));
     if (formulario_validado) {
       $.ajax({
         type: "POST",
@@ -40,7 +39,7 @@ $(document).ready(function () {
             window.location.href = "gantt.php";
           } else {
             toastr["warning"]("No se ha podido actualizar");
-            console.debug(data["msg"]);
+            console.log(data["msg"]);
           }
         },
         error: function (jqXHR, exception, errorThrown) {

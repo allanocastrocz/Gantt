@@ -25,10 +25,11 @@ try {
         $gastos = $_POST['gastos'];
         $entregables = $_POST['entregables'];
         $observaciones = $_POST['observaciones'];
+        $version = $_POST['version'];
 
         /* Inserta los valores de direccion en la tabla correspondiente*/
-        $sql = "INSERT INTO $NOMBRE_TABLA (tarea, responsable, inicio, fin, avance, mano_obra, materia_prima, depreciacion, gastos_admi, entregables, observaciones)
-          VALUES (:tarea, :responsable, :inicio, :fin, :avance, :mano_obra, :materia_prima, :depreciacion, :gastos_admi, :entregables, :observaciones)";
+        $sql = "INSERT INTO $NOMBRE_TABLA (tarea, responsable, inicio, fin, avance, mano_obra, materia_prima, depreciacion, gastos_admi, entregables, observaciones, version)
+          VALUES (:tarea, :responsable, :inicio, :fin, :avance, :mano_obra, :materia_prima, :depreciacion, :gastos_admi, :entregables, :observaciones, :version)";
         $valores = [
             ':tarea' => $tarea,
             ':responsable' => $responsable,
@@ -40,7 +41,8 @@ try {
             ':depreciacion' => $depreciacion,
             ':gastos_admi' => $gastos,
             ':entregables' => $entregables,
-            ':observaciones' => $observaciones
+            ':observaciones' => $observaciones,
+            ':version' => $version
         ];
         $declaracion = $pdo->prepare($sql);
         if ($declaracion->execute($valores)) {

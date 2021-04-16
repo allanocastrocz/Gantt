@@ -46,7 +46,11 @@ $fecha_fin = new DateTime($datos['fin']);
                 <input type="text" class="form-control" name="tarea" id="inputTarea" value="<?php echo $datos['tarea']; ?>" required>
                 <div class="invalid-feedback">No usar caracteres especiales</div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-2">
+                <label for="inputTarea" class="form-label">Tarea</label>
+                <input type="text" class="form-control" name="version" id="inputVersion" value="<?php echo $datos['version']; ?>" required>
+            </div>
+            <div class="col-md-4">
                 <label for="inputResponsable" class="form-label">Responsable</label>
                 <select class="form-select" name="responsable" id="inputResponsable" required>
                     <?php foreach ($usuarios as $user) { ?>

@@ -22,6 +22,7 @@ try {
         $gastos = $_POST['gastos'];
         $entregables = $_POST['entregables'];
         $observaciones = $_POST['observaciones'];
+        $version = $_POST['version'];
 
         $valores = [
             ':tarea' => $tarea,
@@ -35,7 +36,8 @@ try {
             ':gastos_admi' => $gastos,
             ':entregables' => $entregables,
             ':observaciones' => $observaciones,
-            ':id_act' => $id_act
+            ':id_act' => $id_act,
+            ':version' => $version
         ];
 
 
@@ -50,7 +52,8 @@ try {
         depreciacion=:depreciacion, 
         gastos_admi=:gastos_admi, 
         entregables=:entregables, 
-        observaciones=:observaciones
+        observaciones=:observaciones,
+        version=:version
     WHERE idact=:id_act";
 
         $stmt = $pdo->prepare($sql);

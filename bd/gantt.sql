@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2021 at 06:21 AM
+-- Generation Time: Apr 17, 2021 at 01:17 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.34
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `gantt`
 --
-CREATE DATABASE IF NOT EXISTS `gantt` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `gantt`;
 
 -- --------------------------------------------------------
 
@@ -43,6 +41,7 @@ CREATE TABLE `actividades` (
   `gastos_admi` double NOT NULL,
   `entregables` tinytext NOT NULL,
   `observaciones` text NOT NULL,
+  `version` varchar(10) NOT NULL DEFAULT '1.0.0',
   `creado_el` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -50,11 +49,12 @@ CREATE TABLE `actividades` (
 -- Dumping data for table `actividades`
 --
 
-INSERT INTO `actividades` (`idact`, `tarea`, `responsable`, `inicio`, `fin`, `avance`, `mano_obra`, `materia_prima`, `depreciacion`, `gastos_admi`, `entregables`, `observaciones`, `creado_el`) VALUES
-(1, 'Mantenimiento de herramienta', 1, '2021-03-22 09:00:00', '2021-03-24 09:00:00', 0, 3453453, 6547567, 3453453, 5675675, 'Reporte de actividades', 'Todo bien', '2021-03-20 15:22:57'),
-(2, 'Compra de material', 2, '2021-03-24 09:00:00', '2021-03-26 16:00:00', 10, 3453453, 6547567, 3453453, 5675675, 'Facturas', 'Entrega tardia', '2021-03-20 15:22:57'),
-(4, 'Procesamiento de materia', 2, '2021-03-25 21:15:00', '2021-04-02 21:15:00', 10, 4345, 3453453, 4534534, 5345345, 'Facturas', 'Ninguna', '2021-03-20 21:15:33'),
-(5, 'Procesamiento de materia', 2, '2021-03-20 21:22:00', '2021-04-02 21:22:00', 23, 3453, 45345, 234525, 345, 'Facturas', 'Ninguna', '2021-03-20 21:22:28');
+INSERT INTO `actividades` (`idact`, `tarea`, `responsable`, `inicio`, `fin`, `avance`, `mano_obra`, `materia_prima`, `depreciacion`, `gastos_admi`, `entregables`, `observaciones`, `version`, `creado_el`) VALUES
+(1, 'Mantenimiento de herramienta', 1, '2021-03-22 09:00:00', '2021-03-24 09:00:00', 0, 3453453, 1, 3453453, 5675675, 'Reporte de actividades', 'Todo bien', '1.0.0', '2021-03-20 15:22:57'),
+(2, 'Compra de material', 2, '2021-03-24 09:00:00', '2021-03-26 16:00:00', 10, 3453453, 6547567, 3453453, 5675675, 'Facturas', 'Entrega tardia', '2.1.0', '2021-03-20 15:22:57'),
+(4, 'Procesamiento de materia', 2, '2021-03-25 21:15:00', '2021-04-02 21:15:00', 10, 4345, 3453453, 4534534, 5345345, 'Facturas', 'Ninguna', '1.0.0', '2021-03-20 21:15:33'),
+(5, 'Procesamiento de materia', 2, '2021-03-20 21:22:00', '2021-04-02 21:22:00', 23, 3453, 45345, 234525, 345, 'Facturas', 'Ninguna', '1.0.0', '2021-03-20 21:22:28'),
+(7, 'Consolidacion', 3, '2021-04-16 19:15:00', '2021-04-17 20:15:00', 20, 50000, 100000, 2000, 15000, 'Facturas', 'Ninguna', '3.0', '2021-04-16 18:16:27');
 
 -- --------------------------------------------------------
 
@@ -109,7 +109,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `idact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idact` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
